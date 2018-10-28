@@ -13,8 +13,3 @@ services:
       - "9998:9998" #specify ports forewarding
   #   links:
   #     - database # link this service to the database service
-
-  # database: # name of the third service
-  #   image: mongo # specify image to build container from
-  #   ports:
-  #     - "27017:27017" # specify port forewarding
