@@ -1,0 +1,49 @@
+<div class="container">
+  <h3 class="text-center">Prime Number Generator</h3>
+  <div class="container">
+
+    <form class="form-horizontal" #f="ngForm" (ngSubmit)="onSubmit(f)">
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="first">First Number:
+        </label>
+        <div class="col-sm-10 ">
+          <input [(ngModel)]="first_prime" #name type="number" min="1" required class="form-control" id="first"
+            placeholder="Enter First Number" name="first_number">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="second">Second Number:</label>
+        <div class="col-sm-10">
+          <input [(ngModel)]="second_prime" type="number" min="1" required class="form-control" id="second" placeholder="Enter Second Number"
+            name="second_number">
+        </div>
+      </div>
+      <div *ngIf="first_prime<0 || second_prime<0" class="alert alert-danger col-lg-offset-2">
+        Enter a postive Number
+      </div>
+
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <button type="submit" [disabled]="(first_prime<0 || second_prime<0 )|| !f.valid" class="btn btn-primary btn-block">Submit</button>
+        </div>
+      </div>
+    </form>
+
+    <div class="content">
+      <div class="row" *ngIf="primes && !connectionError">
+        <h2 class="text-center">List of Prime Numbers</h2>
+        <ul class="list-group col-lg-8 col-lg-offset-2 col-xs-12 col-sm-12 col-md-12">
+          <a class="list-group-item " *ngFor="let prime of primes">{{prime}} </a>
+        </ul>
+      </div>
+      <div class="row" *ngIf="connectionError">
+        <h5 class="text-center alert alert-danger">Something went Wrong check your connection</h5>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+</div>
